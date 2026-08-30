@@ -7,15 +7,15 @@
     <style>
         /* --- DESIGN SYSTEM & TOKENS --- */
         :root {
-            --bg-main: #121212;       /* Slate Dark Metal */
-            --bg-card: #1a1a1a;       /* Lighter Contrast Gray */
-            --bg-input: #262626;      /* Clean Input Background */
-            --primary: #da1212;       /* Crimson Red Accent */
-            --primary-hover: #aa0e0e; /* Dark Crimson */
-            --text-main: #ffffff;
-            --text-muted: #cccccc;
-            --border-metal: #333333;
-            --accent-chrome: #f0f0f0;
+            --bg-main: #ffffff;       /* Pure White Background */
+            --bg-section: #f8f9fa;    /* Ultra Light Gray for contrast */
+            --bg-card: #ffffff;       /* White Card Elements */
+            --bg-input: #ffffff;      /* White Input Background */
+            --primary: #d32f2f;       /* Bold High-Visibility Red */
+            --primary-hover: #b71c1c; /* Darker Red */
+            --text-main: #222222;     /* Dark Charcoal Text */
+            --text-muted: #555555;    /* Readable Medium Gray */
+            --border-color: #cccccc;  /* Clear Border Gray */
         }
 
         * {
@@ -43,8 +43,8 @@
         .btn {
             display: inline-block;
             background-color: var(--primary);
-            color: var(--text-main);
-            padding: 12px 28px;
+            color: #ffffff;
+            padding: 14px 30px;
             font-weight: 700;
             text-transform: uppercase;
             text-decoration: none;
@@ -62,13 +62,13 @@
 
         .btn-outline {
             background-color: transparent;
-            border: 2px solid var(--accent-chrome);
-            color: var(--accent-chrome);
+            border: 2px solid var(--text-main);
+            color: var(--text-main);
         }
 
         .btn-outline:hover {
-            background-color: var(--accent-chrome);
-            color: var(--bg-main);
+            background-color: var(--text-main);
+            color: #ffffff;
         }
 
         .section-title {
@@ -77,6 +77,7 @@
             letter-spacing: 1px;
             margin-bottom: 15px;
             text-align: center;
+            color: var(--text-main);
         }
 
         .section-title span {
@@ -93,12 +94,13 @@
 
         /* --- NAVIGATION --- */
         header {
-            background-color: #1a1a1a;
-            border-bottom: 2px solid var(--primary);
+            background-color: #ffffff;
+            border-bottom: 3px solid var(--primary);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .nav-container {
@@ -122,7 +124,7 @@
         }
 
         nav a {
-            color: var(--accent-chrome);
+            color: var(--text-main);
             text-decoration: none;
             margin-left: 30px;
             font-weight: 600;
@@ -140,13 +142,13 @@
         #hero {
             padding-top: 180px;
             padding-bottom: 100px;
-            background-color: #151515;
-            border-bottom: 1px solid var(--border-metal);
+            background-color: var(--bg-section);
+            border-bottom: 1px solid var(--border-color);
             text-align: center;
         }
 
         .badge {
-            background-color: rgba(218, 18, 18, 0.15);
+            background-color: rgba(211, 47, 47, 0.1);
             border: 1px solid var(--primary);
             color: var(--primary);
             padding: 6px 16px;
@@ -166,6 +168,7 @@
             line-height: 1.1;
             margin-bottom: 20px;
             letter-spacing: -1px;
+            color: var(--text-main);
         }
 
         #hero p {
@@ -184,8 +187,8 @@
         /* --- SPECS & CAPABILITIES --- */
         #specs {
             padding: 100px 0;
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border-metal);
+            background-color: var(--bg-main);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .grid-3 {
@@ -195,8 +198,8 @@
         }
 
         .spec-card {
-            background-color: var(--bg-main);
-            border: 1px solid var(--border-metal);
+            background-color: var(--bg-section);
+            border: 1px solid var(--border-color);
             padding: 40px 30px;
             border-radius: 4px;
             position: relative;
@@ -223,6 +226,7 @@
             text-transform: uppercase;
             margin-bottom: 15px;
             letter-spacing: 0.5px;
+            color: var(--text-main);
         }
 
         .spec-card ul {
@@ -234,19 +238,20 @@
             margin-bottom: 10px;
             padding-left: 20px;
             position: relative;
+            font-weight: 500;
         }
 
         .spec-card li::before {
-            content: '⚡';
+            content: '✓';
             position: absolute;
             left: 0;
             color: var(--primary);
+            font-weight: bold;
         }
 
         /* --- COMPLIANCE STRIP --- */
         .compliance-bar {
-            background-color: #0b0b0b;
-            border-bottom: 1px solid var(--border-metal);
+            background-color: var(--text-main); /* Dark Charcoal Bar */
             padding: 25px 0;
         }
 
@@ -262,11 +267,11 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text-muted);
+            color: #dddddd;
         }
 
         .compliance-item strong {
-            color: var(--text-main);
+            color: #ffffff;
             display: block;
             font-size: 1.1rem;
             margin-top: 2px;
@@ -275,16 +280,17 @@
         /* --- QUOTE FORM SECTION --- */
         #quote {
             padding: 100px 0;
-            background-color: var(--bg-main);
+            background-color: var(--bg-section);
         }
 
         .quote-wrapper {
             background-color: var(--bg-card);
-            border: 1px solid var(--border-metal);
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             padding: 50px;
             max-width: 800px;
             margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .form-grid {
@@ -309,12 +315,12 @@
             font-weight: 700;
             margin-bottom: 8px;
             letter-spacing: 0.5px;
-            color: var(--accent-chrome);
+            color: var(--text-main);
         }
 
         input, textarea, select {
             background-color: var(--bg-input);
-            border: 1px solid var(--border-metal);
+            border: 1px solid var(--border-color);
             color: var(--text-main);
             padding: 14px;
             border-radius: 4px;
@@ -325,6 +331,7 @@
         input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 5px rgba(211, 47, 47, 0.2);
         }
 
         /* --- TEXT AI BOT INTERACTIVE WIDGET --- */
@@ -334,10 +341,10 @@
             right: 25px;
             width: 360px;
             max-height: 500px;
-            background-color: var(--bg-card);
+            background-color: #ffffff;
             border: 2px solid var(--primary);
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             display: flex;
             flex-direction: column;
             z-index: 2000;
@@ -346,6 +353,7 @@
 
         .ai-header {
             background-color: var(--primary);
+            color: #ffffff;
             padding: 15px;
             font-weight: bold;
             display: flex;
@@ -356,28 +364,30 @@
             letter-spacing: 0.5px;
         }
 
-        .ai-body {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background-color: #111111;
-        }
 
-        .chat-msg {
-            max-width: 85%;
-            padding: 10px 14px;
-            border-radius: 6px;
+.ai-body {
+flex: 1;
+padding: 15px;
+overflow-y: auto;
+height: 280px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+background-color: #f8f9fa;
+}
+.chat-msg {
+max-width: 85%;
+padding: 10px 14px;
+border-radius: 6px;
 font-size: 0.9rem;
+line-height: 1.4;
 }
 .chat-msg.bot {
-background-color: var(--bg-input);
+background-color: #ffffff;
 color: var(--text-main);
 align-self: flex-start;
-border-left: 3px solid var(--primary);
+border-left: 4px solid var(--primary);
+box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 .chat-msg.user {
 background-color: var(--primary);
@@ -386,8 +396,8 @@ align-self: flex-end;
 }
 .ai-footer {
 padding: 10px;
-background-color: var(--bg-card);
-border-top: 1px solid var(--border-metal);
+background-color: #ffffff;
+border-top: 1px solid var(--border-color);
 display: flex;
 gap: 8px;
 }
@@ -396,6 +406,9 @@ flex: 1;
 padding: 10px;
 font-size: 0.85rem;
 border-radius: 4px;
+background-color: #f1f3f5;
+border: 1px solid var(--border-color);
+color: var(--text-main);
 }
 .ai-footer button {
 background-color: var(--primary);
@@ -410,8 +423,8 @@ font-size: 0.75rem;
 }
 /* --- FOOTER --- */
 footer {
-background-color: #0a0a0a;
-border-top: 1px solid var(--border-metal);
+background-color: #111111;
+color: #ffffff;
 padding: 60px 0 30px 0;
 }
 .footer-grid {
@@ -425,18 +438,19 @@ text-transform: uppercase;
 font-size: 1.1rem;
 margin-bottom: 20px;
 letter-spacing: 0.5px;
+color: #ffffff;
 }
 .footer-about p {
-color: var(--text-muted);
+color: #cccccc;
 font-size: 0.95rem;
 }
 .footer-contact p {
-color: var(--text-muted);
+color: #cccccc;
 margin-bottom: 12px;
 font-size: 0.95rem;
 }
 .footer-contact a {
-color: var(--text-main);
+color: #ffffff;
 text-decoration: none;
 transition: color 0.3s ease;
 }
@@ -444,11 +458,11 @@ transition: color 0.3s ease;
 color: var(--primary);
 }
 .footer-bottom {
-border-top: 1px solid var(--border-metal);
+border-top: 1px solid #333333;
 padding-top: 30px;
 text-align: center;
 font-size: 0.85rem;
-color: var(--text-muted);
+color: #999999;
 }
 /* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 768px) {
@@ -458,6 +472,7 @@ nav { display: none; }
 .quote-wrapper { padding: 30px 20px; }
 #ai-widget { width: 310px; right: 10px; bottom: 10px; }
 }
+
 
 ⚡ Pitbull Dispatch Bot
 
@@ -469,6 +484,7 @@ Hello! I am the Pitbull Hotshots automated assistant. Do you have a question abo
 
 
 Send
+
 🚨 Pitbull Hotshots
 Professional owner-operator freight transport assets specializing in reliable flatbed logistical movements out of North Carolina to any destination in the lower 48 states.
 
@@ -481,6 +497,7 @@ Location: Charlotte, NC
 
 
 © 2026 Pitbull Hotshots. All Rights Reserved. Fully Bonded & Insured up to $250K Cargo.
+
 
 function handleKeyPress(e) {
 if (e.key === 'Enter') {
@@ -524,3 +541,6 @@ chatBody.appendChild(botDiv);
 chatBody.scrollTop = chatBody.scrollHeight;
 }, 600);
 }
+
+
+

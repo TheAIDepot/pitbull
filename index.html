@@ -1,11 +1,649 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Pages Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitbull Hotshots | Nationwide Heavy Haul & Flatbed Transportation</title>
+
+    <style>
+        :root {
+            --bg-main: #f4f4f4;
+            --bg-card: #ffffff;
+            --primary: #da1212;
+            --primary-hover: #af0f0f;
+            --text-main: #111111;
+            --text-muted: #555555;
+            --border-color: #dddddd;
+            --dark: #111111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-top: 92px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 100%;
+            background-color: #ffffff;
+            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+        }
+
+        .nav-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 72px;
+            padding: 12px 20px;
+        }
+
+        .logo {
+            color: var(--text-main);
+            font-size: clamp(1.15rem, 4vw, 1.6rem);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .dispatch-status {
+            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+        }
+
+        .hero {
+            margin-bottom: 30px;
+            padding: 60px 20px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            margin-bottom: 15px;
+            font-size: clamp(2.2rem, 6vw, 3.2rem);
+            line-height: 1.12;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--primary);
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background-color: var(--primary-hover);
+        }
+
+        .compliance-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 22px 20px;
+            background-color: var(--dark);
+            border-radius: 8px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .compliance-item {
+            min-width: 180px;
+        }
+
+        .compliance-item p {
+            color: #b9b9b9;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .compliance-item strong {
+            display: block;
+            margin-top: 2px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            padding: 30px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bg-main);
+            color: var(--primary);
+        }
+
+        .card ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .card li + li {
+            margin-top: 8px;
+        }
+
+        .form-section {
+            margin-bottom: 50px;
+            padding: 40px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .form-section h2 {
+            margin-bottom: 8px;
+            font-size: 1.7rem;
+            text-transform: uppercase;
+        }
+
+        .form-intro {
+            margin-bottom: 25px;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: 2px solid rgba(218, 18, 18, 0.25);
+            border-color: var(--primary);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-note {
+            margin-top: 12px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 40px 20px 120px;
+            background-color: var(--dark);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        footer p + p {
+            margin-top: 8px;
+        }
+
+        footer a {
+            color: #ffffff;
+        }
+
+        #ai-widget {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 2000;
+            width: min(320px, calc(100vw - 28px));
+            overflow: hidden;
+            background-color: #ffffff;
+            border: 3px solid var(--primary);
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.22);
+        }
+
+        .ai-header {
+            padding: 12px;
+            background-color: var(--primary);
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .ai-body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 240px;
+            overflow-y: auto;
+            padding: 12px;
+            background-color: #f9f9f9;
+        }
+
+        .msg {
+            max-width: 85%;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        .msg.bot {
+            align-self: flex-start;
+            background-color: #e9e9e9;
+            color: var(--text-main);
+        }
+
+        .msg.user {
+            align-self: flex-end;
+            background-color: var(--primary);
+            color: #ffffff;
+        }
+
+        .ai-footer {
+            display: flex;
+            gap: 6px;
+            padding: 10px;
+            border-top: 1px solid var(--border-color);
+            background-color: #ffffff;
+        }
+
+        .ai-footer input {
+            min-width: 0;
+            flex: 1;
+            padding: 8px;
+        }
+
+        .ai-footer button {
+            padding: 0 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--primary);
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .ai-footer button:hover,
+        .ai-footer button:focus {
+            background-color: var(--primary-hover);
+        }
+
+        @media (max-width: 850px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding-top: 82px;
+            }
+
+            .nav-box {
+                min-height: 62px;
+                padding: 10px 15px;
+            }
+
+            .dispatch-status {
+                font-size: 0.68rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .hero {
+                padding: 45px 18px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .form-section {
+                padding: 25px 18px;
+            }
+
+            #ai-widget {
+                right: 12px;
+                bottom: 12px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <h1 style="color: red;">GitHub Pages works</h1>
-  <p>This is a plain HTML test.</p>
+    <header>
+        <div class="container nav-box">
+            <a href="#" class="logo">🚨 Pitbull <span>Hotshots</span></a>
+            <div class="dispatch-status">DISPATCH ACTIVE</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Pitbull Hotshots Logistics</h1>
+            <p>
+                Based out of Charlotte, NC. Premium Ford F350 and Gatormade
+                gooseneck assets running heavy-haul freight across all 48 states.
+            </p>
+            <a href="tel:7075066353" class="btn">
+                Call Dispatch: (707) 506-6353
+            </a>
+        </section>
+
+        <section class="compliance-bar" aria-label="Business overview">
+            <div class="compliance-item">
+                <p>Home Base</p>
+                <strong>Charlotte, NC</strong>
+            </div>
+
+            <div class="compliance-item">
+                <p>Cargo Insurance</p>
+                <strong>$250,000 Coverage</strong>
+            </div>
+
+            <div class="compliance-item">
+                <p>Coverage Scope</p>
+                <strong>48 States Nationwide</strong>
+            </div>
+        </section>
+
+        <section class="grid-3">
+            <article class="card">
+                <h3>The Power Rig</h3>
+                <ul>
+                    <li>Ford F350 Super Duty</li>
+                    <li>Turbo Diesel High-Output Engine</li>
+                    <li>Gooseneck Secured Setup</li>
+                    <li>Commercial Fleet Inspection Standard</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h3>The Trailer Setup</h3>
+                <ul>
+                    <li>2026 Gatormade Gooseneck</li>
+                    <li>20–25 ft Deck + 5 ft Dovetail</li>
+                    <li>Dual 8K / 10K Axle Strength</li>
+                    <li>Fold-Flat Mega Deck Capability</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h3>Securement Assets</h3>
+                <ul>
+                    <li>Heavy Transport Straps &amp; Binders</li>
+                    <li>Grade 70 Transport Chains</li>
+                    <li>All-Weather Drop Tarps</li>
+                    <li>General Freight Types Accepted</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="form-section" id="quote">
+            <h2>Request a Linehaul Quote</h2>
+            <p class="form-intro">
+                Send your route and cargo details. Dispatch can review your
+                shipment requirements and follow up directly.
+            </p>
+
+            <!-- Replace # with your actual Formspree endpoint when ready. -->
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Company / Contact Name</label>
+                    <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="John Doe"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        required
+                        placeholder="(707) 506-6353"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="pitbullhotshots@proton.me"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="route">Route: Origin City to Destination City</label>
+                    <input
+                        id="route"
+                        type="text"
+                        name="route"
+                        required
+                        placeholder="Charlotte, NC to Houston, TX"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Cargo Specs and Weight Notes</label>
+                    <textarea
+                        id="notes"
+                        name="notes"
+                        rows="4"
+                        placeholder="Describe cargo type, total length, approximate weight, pickup date, and special requirements."
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn">Submit Route Details</button>
+
+                <p class="form-note">
+                    The form will not email submissions until you replace
+                    <code>action="#"</code> with your own Formspree form endpoint
+                    or connect another form service.
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <aside id="ai-widget" aria-label="Pitbull Dispatch chat">
+        <div class="ai-header">⚡ Pitbull Dispatch Bot</div>
+
+        <div id="chatBody" class="ai-body">
+            <div class="msg bot">
+                Hello! Ask about our F350 truck setup, trailer sizes, coverage,
+                or how to request a freight quote.
+            </div>
+        </div>
+
+        <div class="ai-footer">
+            <input
+                id="userInput"
+                type="text"
+                placeholder="Ask dispatch..."
+                aria-label="Message Pitbull Dispatch Bot"
+            >
+            <button id="sendButton" type="button">Send</button>
+        </div>
+    </aside>
+
+    <footer>
+        <p>© 2026 Pitbull Hotshots Logistics. All Rights Reserved.</p>
+        <p>
+            Direct Contact:
+            <a href="mailto:pitbullhotshots@proton.me">pitbullhotshots@proton.me</a>
+            |
+            <a href="tel:7075066353">Phone: 707-506-6353</a>
+        </p>
+    </footer>
+
+    <script>
+        const input = document.getElementById("userInput");
+        const chatBody = document.getElementById("chatBody");
+        const sendButton = document.getElementById("sendButton");
+
+        function sendBotMessage() {
+            const text = input.value.trim();
+
+            if (!text) {
+                return;
+            }
+
+            const userMessage = document.createElement("div");
+            userMessage.className = "msg user";
+            userMessage.textContent = text;
+            chatBody.appendChild(userMessage);
+
+            input.value = "";
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            window.setTimeout(() => {
+                const botMessage = document.createElement("div");
+                botMessage.className = "msg bot";
+
+                const query = text.toLowerCase();
+
+                if (
+                    query.includes("call") ||
+                    query.includes("appointment") ||
+                    query.includes("speak") ||
+                    query.includes("talk") ||
+                    query.includes("schedule")
+                ) {
+                    botMessage.textContent =
+                        "Please submit your details in the quote form or call dispatch directly at (707) 506-6353.";
+                } else if (
+                    query.includes("insurance") ||
+                    query.includes("cover") ||
+                    query.includes("bond")
+                ) {
+                    botMessage.textContent =
+                        "Pitbull Hotshots lists $250,000 in cargo insurance coverage. Contact dispatch for current documentation and shipment-specific confirmation.";
+                } else if (
+                    query.includes("trailer") ||
+                    query.includes("gator") ||
+                    query.includes("deck") ||
+                    query.includes("dovetail")
+                ) {
+                    botMessage.textContent =
+                        "The listed trailer setup is a 2026 Gatormade gooseneck with a 20–25 ft main deck plus a 5 ft dovetail. Send your dimensions for a compatibility review.";
+                } else if (
+                    query.includes("truck") ||
+                    query.includes("f350") ||
+                    query.includes("rig")
+                ) {
+                    botMessage.textContent =
+                        "The listed power unit is a high-output Ford F350 turbo-diesel dually. Dispatch can confirm equipment availability for your shipment.";
+                } else if (
+                    query.includes("rate") ||
+                    query.includes("price") ||
+                    query.includes("cost") ||
+                    query.includes("quote")
+                ) {
+                    botMessage.textContent =
+                        "Rates depend on your route, cargo weight, dimensions, schedule, and securement requirements. Submit the quote form or call dispatch at (707) 506-6353.";
+                } else if (
+                    query.includes("where") ||
+                    query.includes("location") ||
+                    query.includes("charlotte")
+                ) {
+                    botMessage.textContent =
+                        "Our home base is Charlotte, North Carolina, with service coverage across the lower 48 states.";
+                } else {
+                    botMessage.textContent =
+                        "For lane availability, rates, and freight scheduling, submit your route details in the quote form or call dispatch at (707) 506-6353.";
+                }
+
+                chatBody.appendChild(botMessage);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 450);
+        }
+
+        sendButton.addEventListener("click", sendBotMessage);
+
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                sendBotMessage();
+            }
+        });
+    </script>
 </body>
 </html>

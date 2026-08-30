@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitbull Hotshots | Nationwide Heavy Haul & Flatbed Transportation</title>
+    <style>
+        /* --- DESIGN SYSTEM & TOKENS --- */
+        :root {
+            --bg-main: #0d0d0d;
+            --bg-card: #141414;
+            --bg-input: #1f1f1f;
+            --primary: #da1212;
+            --primary-hover: #aa0e0e;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-metal: #333333;
+            --accent-chrome: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--text-main);
+            padding: 12px 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-chrome);
+            color: var(--accent-chrome);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-chrome);
+            color: var(--bg-main);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            font-size: 1.1rem;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: rgba(13, 13, 13, 0.95);
+            border-bottom: 1px solid var(--border-metal);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--accent-chrome);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(13,13,13,1) 100%), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23111"/><path d="M0 0l100 100M100 0L0 100" stroke="%23222" stroke-width="1"/></svg>');
+            background-size: cover;
+            text-align: center;
+        }
+
+        .badge {
+            background-color: rgba(218, 18, 18, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        #hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* --- SPECS & CAPABILITIES --- */
+        #specs {
+            padding: 100px 0;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-metal);
+            border-bottom: 1px solid var(--border-metal);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .spec-card {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-metal);
+            padding: 40px 30px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .spec-card:hover {
+            border-color: var(--primary);
+        }
+
+        .spec-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+
+        .spec-card h3 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-card ul {
+            list-style: none;
+        }
+
+        .spec-card li {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .spec-card li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* --- COMPLIANCE STRIP --- */
+        .compliance-bar {
+            background-color: #000000;
+            border-bottom: 1px solid var(--border-metal);
+            padding: 20px 0;
+        }
+
+        .compliance-flex {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .compliance-item p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .compliance-item strong {
+            color: var(--text-main);
+            display: block;
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        /* --- QUOTE FORM SECTION --- */
+        #quote {
+            padding: 100px 0;
+        }
+
+        .quote-wrapper {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-metal);
+            border-radius: 6px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            color: var(--accent-chrome);
+        }
+
+        input, textarea, select {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-metal);
+            color: var(--text-main);
+            padding: 14px;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #050505;
+            border-top: 1px solid var(--border-metal);
+            padding: 60px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h4, .footer-contact h4 {
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-contact p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--primary);
+        }
+
+.footer-bottom {
+border-top: 1px solid var(--border-metal);
+padding-top: 30px;
+text-align: center;
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+/* --- RESPONSIVE ADJUSTMENTS --- /
+@media (max-width: 768px) {
+#hero h1 { font-size: 2.5rem; }
+.hero-cta { flex-direction: column; gap: 15px; }
+nav { display: none; } / Simplified for single-page mobile */
+.quote-wrapper { padding: 30px 20px; }
+}
+
+🚨 Pitbull Hotshots
+Professional owner-operator freight transport assets specializing in reliable flatbed logistical movements out of North Carolina to any destination in the lower 48 states.
+
+
+Direct Dispatch
+Phone: 707-506-6353
+Email: pitbullhotshots@proton.me
+Location: Charlotte, NC
+
+
+
+© 2026 Pitbull Hotshots. All Rights Reserved. Fully Bonded & Insured up to $250K Cargo.

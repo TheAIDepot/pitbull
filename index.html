@@ -7,15 +7,15 @@
     <style>
         /* --- DESIGN SYSTEM & TOKENS --- */
         :root {
-            --bg-main: #0d0d0d;
-            --bg-card: #141414;
-            --bg-input: #1f1f1f;
-            --primary: #da1212;
-            --primary-hover: #aa0e0e;
+            --bg-main: #121212;       /* Slate Dark Metal */
+            --bg-card: #1a1a1a;       /* Lighter Contrast Gray */
+            --bg-input: #262626;      /* Clean Input Background */
+            --primary: #da1212;       /* Crimson Red Accent */
+            --primary-hover: #aa0e0e; /* Dark Crimson */
             --text-main: #ffffff;
-            --text-muted: #aaaaaa;
+            --text-muted: #cccccc;
             --border-metal: #333333;
-            --accent-chrome: #e6e6e6;
+            --accent-chrome: #f0f0f0;
         }
 
         * {
@@ -93,13 +93,12 @@
 
         /* --- NAVIGATION --- */
         header {
-            background-color: rgba(13, 13, 13, 0.95);
-            border-bottom: 1px solid var(--border-metal);
+            background-color: #1a1a1a;
+            border-bottom: 2px solid var(--primary);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
 
         .nav-container {
@@ -141,14 +140,13 @@
         #hero {
             padding-top: 180px;
             padding-bottom: 100px;
-            background: linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(13,13,13,1) 100%), 
-                        url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23111"/><path d="M0 0l100 100M100 0L0 100" stroke="%23222" stroke-width="1"/></svg>');
-            background-size: cover;
+            background-color: #151515;
+            border-bottom: 1px solid var(--border-metal);
             text-align: center;
         }
 
         .badge {
-            background-color: rgba(218, 18, 18, 0.1);
+            background-color: rgba(218, 18, 18, 0.15);
             border: 1px solid var(--primary);
             color: var(--primary);
             padding: 6px 16px;
@@ -187,7 +185,6 @@
         #specs {
             padding: 100px 0;
             background-color: var(--bg-card);
-            border-top: 1px solid var(--border-metal);
             border-bottom: 1px solid var(--border-metal);
         }
 
@@ -248,9 +245,9 @@
 
         /* --- COMPLIANCE STRIP --- */
         .compliance-bar {
-            background-color: #000000;
+            background-color: #0b0b0b;
             border-bottom: 1px solid var(--border-metal);
-            padding: 20px 0;
+            padding: 25px 0;
         }
 
         .compliance-flex {
@@ -278,6 +275,7 @@
         /* --- QUOTE FORM SECTION --- */
         #quote {
             padding: 100px 0;
+            background-color: var(--bg-main);
         }
 
         .quote-wrapper {
@@ -329,48 +327,122 @@
             border-color: var(--primary);
         }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: #050505;
-            border-top: 1px solid var(--border-metal);
-            padding: 60px 0 30px 0;
+        /* --- TEXT AI BOT INTERACTIVE WIDGET --- */
+        #ai-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 360px;
+            max-height: 500px;
+            background-color: var(--bg-card);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            z-index: 2000;
+            overflow: hidden;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-about h4, .footer-contact h4 {
+        .ai-header {
+            background-color: var(--primary);
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             text-transform: uppercase;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 0.9rem;
             letter-spacing: 0.5px;
         }
 
-        .footer-about p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
+        .ai-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-color: #111111;
         }
 
-        .footer-contact p {
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-        }
-
-        .footer-contact a {
-            color: var(--text-main);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-contact a:hover {
-            color: var(--primary);
-        }
-
+        .chat-msg {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 6px;
+font-size: 0.9rem;
+}
+.chat-msg.bot {
+background-color: var(--bg-input);
+color: var(--text-main);
+align-self: flex-start;
+border-left: 3px solid var(--primary);
+}
+.chat-msg.user {
+background-color: var(--primary);
+color: white;
+align-self: flex-end;
+}
+.ai-footer {
+padding: 10px;
+background-color: var(--bg-card);
+border-top: 1px solid var(--border-metal);
+display: flex;
+gap: 8px;
+}
+.ai-footer input {
+flex: 1;
+padding: 10px;
+font-size: 0.85rem;
+border-radius: 4px;
+}
+.ai-footer button {
+background-color: var(--primary);
+color: white;
+border: none;
+padding: 0 15px;
+font-weight: bold;
+border-radius: 4px;
+cursor: pointer;
+text-transform: uppercase;
+font-size: 0.75rem;
+}
+/* --- FOOTER --- */
+footer {
+background-color: #0a0a0a;
+border-top: 1px solid var(--border-metal);
+padding: 60px 0 30px 0;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 40px;
+margin-bottom: 40px;
+}
+.footer-about h4, .footer-contact h4 {
+text-transform: uppercase;
+font-size: 1.1rem;
+margin-bottom: 20px;
+letter-spacing: 0.5px;
+}
+.footer-about p {
+color: var(--text-muted);
+font-size: 0.95rem;
+}
+.footer-contact p {
+color: var(--text-muted);
+margin-bottom: 12px;
+font-size: 0.95rem;
+}
+.footer-contact a {
+color: var(--text-main);
+text-decoration: none;
+transition: color 0.3s ease;
+}
+.footer-contact a:hover {
+color: var(--primary);
+}
 .footer-bottom {
 border-top: 1px solid var(--border-metal);
 padding-top: 30px;
@@ -378,14 +450,25 @@ text-align: center;
 font-size: 0.85rem;
 color: var(--text-muted);
 }
-/* --- RESPONSIVE ADJUSTMENTS --- /
+/* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 768px) {
 #hero h1 { font-size: 2.5rem; }
 .hero-cta { flex-direction: column; gap: 15px; }
-nav { display: none; } / Simplified for single-page mobile */
+nav { display: none; }
 .quote-wrapper { padding: 30px 20px; }
+#ai-widget { width: 310px; right: 10px; bottom: 10px; }
 }
 
+⚡ Pitbull Dispatch Bot
+
+
+
+Hello! I am the Pitbull Hotshots automated assistant. Do you have a question about our nationwide capabilities, or would you like to request an appointment to speak?
+
+
+
+
+Send
 🚨 Pitbull Hotshots
 Professional owner-operator freight transport assets specializing in reliable flatbed logistical movements out of North Carolina to any destination in the lower 48 states.
 
@@ -398,3 +481,46 @@ Location: Charlotte, NC
 
 
 © 2026 Pitbull Hotshots. All Rights Reserved. Fully Bonded & Insured up to $250K Cargo.
+
+function handleKeyPress(e) {
+if (e.key === 'Enter') {
+processUserMessage();
+}
+}
+function processUserMessage() {
+const inputField = document.getElementById('userInput');
+const chatBody = document.getElementById('chatBody');
+const query = inputField.value.trim();
+if (query === '') return;
+// Display User Message
+const userDiv = document.createElement('div');
+userDiv.className = 'chat-msg user';
+userDiv.textContent = query;
+chatBody.appendChild(userDiv);
+inputField.value = '';
+// Auto-scroll chat body
+chatBody.scrollTop = chatBody.scrollHeight;
+// Process AI Logics based on hotshot freight business requirements
+setTimeout(() => {
+const botDiv = document.createElement('div');
+botDiv.className = 'chat-msg bot';
+const lowerQuery = query.toLowerCase();
+if (lowerQuery.includes('appointment') || lowerQuery.includes('speak') || lowerQuery.includes('call') || lowerQuery.includes('talk') || lowerQuery.includes('schedule')) {
+botDiv.innerHTML = "I would be happy to set up a direct call with dispatch! Please fill out our brief Get A Quote form on this page with your phone details, or tap the button at the top to dial us immediately at (707) 506-6353.";
+} else if (lowerQuery.includes('insurance') || lowerQuery.includes('cover')) {
+botDiv.textContent = "We carry an active $250,000 cargo insurance limit to protect structural assets and general freight movements over long distances safely.";
+} else if (lowerQuery.includes('trailer') || lowerQuery.includes('gator') || lowerQuery.includes('length') || lowerQuery.includes('size')) {
+botDiv.textContent = "We run a brand new 2026 Gatormade Gooseneck Flatbed featuring a 20-25ft main deck plus a 5ft dovetail with fold-flat mega decks and dual 8K/10K axles.";
+} else if (lowerQuery.includes('truck') || lowerQuery.includes('rig') || lowerQuery.includes('f350')) {
+botDiv.textContent = "Our main tractor asset is a high-output Ford F350 turbo-diesel dually, maintained meticulously to achieve rapid cross-country delivery.";
+} else if (lowerQuery.includes('where') || lowerQuery.includes('location') || lowerQuery.includes('charlotte')) {
+botDiv.textContent = "Our home operations base is in Charlotte, North Carolina, but our operational lanes service all lower 48 states nationwide.";
+} else if (lowerQuery.includes('price') || lowerQuery.includes('rate') || lowerQuery.includes('cost') || lowerQuery.includes('mile')) {
+botDiv.textContent = "Our per-mile lane rates depend entirely on the specific dimensions, cargo weight, and destination routes. Please submit your lanes in our 'Get a Quote' block for rapid pricing reviews.";
+} else {
+botDiv.innerHTML = "Got it! For detailed freight scheduling, lane availability queries, or to confirm a formal phone appointment, please drop your info directly into our main routing form on this page or call dispatch at (707) 506-6353.";
+}
+chatBody.appendChild(botDiv);
+chatBody.scrollTop = chatBody.scrollHeight;
+}, 600);
+}
